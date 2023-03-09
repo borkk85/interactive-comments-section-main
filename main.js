@@ -280,8 +280,8 @@ const renderComments = (data) => {
       })
 
       noButton.addEventListener("click", () => {
-        deleteSection.classList.add('hidden'); // hide the delete section
-        commentElement.classList.remove('hidden'); // show the comment element
+        deleteSection.classList.add('hidden'); 
+        commentElement.classList.remove('hidden'); 
       });
       
     });
