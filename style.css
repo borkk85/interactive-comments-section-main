@@ -40,8 +40,9 @@ strong {
 .minus {
   cursor: pointer;
 }
-.plus svg:hover {
-  color: var(--Moderate-blue);
+.plus:hover path,
+.minus:hover path {
+  fill: var(--Moderate-blue);
 }
 
 .reply-button:hover {
