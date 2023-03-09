@@ -17,56 +17,48 @@ const renderComments = (data) => {
       <div class="comment_card">
         <div class="comment_counter">
             
-             <img src='./images/icon-plus.svg' alt="plus-icon" class='plus'/>
+          <svg alt="plus-icon" class='plus' width="11" height="11" xmlns="http://www.w3.org/2000/svg"><path d="M6.33 10.896c.137 0 .255-.05.354-.149.1-.1.149-.217.149-.354V7.004h3.315c.136 0 .254-.05.354-.149.099-.1.148-.217.148-.354V5.272a.483.483 0 0 0-.148-.354.483.483 0 0 0-.354-.149H6.833V1.4a.483.483 0 0 0-.149-.354.483.483 0 0 0-.354-.149H4.915a.483.483 0 0 0-.354.149c-.1.1-.149.217-.149.354v3.37H1.08a.483.483 0 0 0-.354.15c-.1.099-.149.217-.149.353v1.23c0 .136.05.254.149.353.1.1.217.149.354.149h3.333v3.39c0 .136.05.254.15.353.098.1.216.149.353.149H6.33Z" fill="#C5C6EF"/></svg>
              
-              <span class="counter">${comment.score}</span>
+          <span class="counter">${comment.score}</span>
               
-              <img src="./images/icon-minus.svg" alt="minus-icon" class='minus' />
-              
-          </div>
-                <div class="comment_main_section">
-                       <div class="header">
-                         <div class="social">
-                           <img src="${
-                             comment.user.image.png
-                           }" alt="User avatar" />
-                           <p class="user">${comment.user.username}</p>
-                           <p class="duration">${comment.createdAt}</p>
-                         </div>
-                       <div class="reply_button">
-                         <img src="./images/icon-reply.svg" alt="" />
-                         <a class="reply">Reply</a>
-                       </div>
-                       ${
-                         comment.replies.username === "juliusomo"
-                           ? `
-                         <div class="edit_delete_buttons">
-                           <img src="./images/icon-edit.svg" alt="" class="edit_button" />
-                           <img src="./images/icon-delete.svg" alt="" class="delete_button" />
-                         </div>
-                         `
-                           : ""
-                       }
+          <svg alt="minus-icon" class='minus' width="11" height="3" xmlns="http://www.w3.org/2000/svg"><path d="M9.256 2.66c.204 0 .38-.056.53-.167.148-.11.222-.243.222-.396V.722c0-.152-.074-.284-.223-.395a.859.859 0 0 0-.53-.167H.76a.859.859 0 0 0-.53.167C.083.437.009.57.009.722v1.375c0 .153.074.285.223.396a.859.859 0 0 0 .53.167h8.495Z" fill="#C5C6EF"/></svg>
+             
+        </div>
+        <div class="comment_main_section">
+          <div class="header">
+            <div class="social">
+              <img src="${comment.user.image.png}" alt="User avatar" />
+              <p class="user">${comment.user.username}</p>
+              <p class="duration">${comment.createdAt}</p>
+            </div>
+            <div class="reply_button">
+              <img src="./images/icon-reply.svg" alt="" />
+              <a class="reply">Reply</a>
+            </div>${comment.replies.username === "juliusomo" ? 
+            `
+            <div class="edit_delete_buttons">
+              <img src="./images/icon-edit.svg" alt="" class="edit_button" />
+              <img src="./images/icon-delete.svg" alt="" class="delete_button" />
+            </div>
+            `
+            : ""}
                          
-                       </div>
-                       <div class="text">
-                       ${
-                         comment.replyingTo
-                           ? `
-                        <span class="reply-to">@${comment.replyingTo}</span>
-                        `
-                           : ""
-                       }
-                        <span class="db-text">${comment.content}</span>
-                       </div>
-                       ${
-                         comment.replies.length > 0
-                           ? `
-                           </div>
-                           </div>
-                           </div>
+          </div>
+            <div class="text">
+              ${comment.replyingTo ? 
+                `
+                <span class="reply-to">@${comment.replyingTo}</span>
+                `
+               : ""}
+              <span class="db-text">${comment.content}</span>
+            </div>
+              ${comment.replies.length > 0 ? 
+                `
+          </div>
+        </div>
+      </div>
 
-       <div class="border comment_replies">
+      <div class="border comment_replies">
         ${comment.replies
           .map(
             (reply) => `
@@ -85,18 +77,18 @@ const renderComments = (data) => {
                 <p class="duration">${reply.createdAt}</p>
               </div>
               
-                <div class="reply_button">
-                ${
-                  reply.user.username === "juliusomo"
-                    ? `
-                  
+              <div class="reply_button">
+                ${reply.user.username === "juliusomo" ? 
+                `
                   <div class='edit-button'>
-                  <a class="edit"><img src="./images/icon-edit.svg" alt="" class="edit_button"/>
-                  Edit</a>
+                    <a class="edit">
+                      <img src="./images/icon-edit.svg" alt="" class="edit_button"/>
+                    Edit</a>
                   </div>
                   <div class='delete-button'>
-                  <a class="delete"> <img src="./images/icon-delete.svg" alt="" class="delete_button"/>
-                  Delete</a>
+                    <a class="delete"> 
+                      <img src="./images/icon-delete.svg" alt="" class="delete_button"/>
+                    Delete</a>
                   </div>
                 `
                     : `
@@ -104,9 +96,7 @@ const renderComments = (data) => {
                     `
                 }
                 </div>
-                
-                
-              
+             
             </div>
             <div class="text">
               <span class="reply-to">@${reply.replyingTo}</span>
@@ -162,7 +152,6 @@ const renderComments = (data) => {
       if (
         containerElement &&
         containerElement.classList.contains("border", "comment-replies")
-        
       ) {
         containerElement.classList.toggle("hidden");
         button.style.opacity = "1";
@@ -249,7 +238,6 @@ const renderComments = (data) => {
 
       const deleteSection = document.querySelector(".delete-section");
 
-
       const deleteCont = document.createElement("div");
       deleteCont.classList.add("delete-container");
 
@@ -274,16 +262,15 @@ const renderComments = (data) => {
       const yesButton = deleteSection.querySelector(".yes");
       const noButton = deleteSection.querySelector(".no");
 
-      yesButton.addEventListener('click', () => {
-        commentElement.classList.add('hidden')
-        deleteSection.classList.add('hidden')
-      })
+      yesButton.addEventListener("click", () => {
+        commentElement.classList.add("hidden");
+        deleteSection.classList.add("hidden");
+      });
 
       noButton.addEventListener("click", () => {
-        deleteSection.classList.add('hidden'); 
-        commentElement.classList.remove('hidden'); 
+        deleteSection.classList.add("hidden");
+        commentElement.classList.remove("hidden");
       });
-      
     });
   });
 };
